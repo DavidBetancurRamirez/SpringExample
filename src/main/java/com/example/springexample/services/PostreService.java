@@ -20,7 +20,7 @@ public class PostreService implements  IPostreService {
     public Postre save(Postre postre) { return postreDAO.save(postre); }
 
     @Override
-    public Postre findById(long id) { return null; }
+    public Postre findById(long id) { return postreDAO.findById(id).orElse(null); }
 
     @Override
     public void deleteById(Long id) { postreDAO.deleteById(id); }

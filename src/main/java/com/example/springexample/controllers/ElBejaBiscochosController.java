@@ -19,11 +19,14 @@ public class ElBejaBiscochosController {
     @GetMapping("/elbejabiscochos")
     public List<Postre> getElBejaBiscochos() {
         System.out.println("getElBejaBiscochos");
+
         return postreService.findAll();
     }
 
     @PostMapping("/elbejabiscochos")
     public ResponseEntity<?> postElBejaBiscochos (@Valid @RequestBody Postre postre) {
+        System.out.println("postElBejaBiscochos");
+
         Map<String,String> response= new HashMap<>();
 
         try{
@@ -38,12 +41,18 @@ public class ElBejaBiscochosController {
 
     @DeleteMapping("/elbejabiscochos/{id}")
     public void deleteElBejaBiscochos (@PathVariable Long id) {
+        System.out.println("deleteElBejaBiscochos");
+
         postreService.deleteById(id);
     }
 
     @GetMapping("/elbejabiscochos/{id}")
     public ResponseEntity<?> getElBejaBiscochosById (@PathVariable Long id) {
+        System.out.println("getElBejaBiscochosById");
+
         Postre p = postreService.findById(id);
+        System.out.println(p);
+
         Map<String,String> response= new HashMap<>();
 
         if( p==null ) {
@@ -56,6 +65,8 @@ public class ElBejaBiscochosController {
 
     @PutMapping("/elbejabiscochos/{id}")
     public Postre putElBejaBiscochos (@RequestBody Postre postre, @PathVariable Long id) {
+        System.out.println("putElBejaBiscochos");
+
         Postre p = postreService.findById(id);
 
         if( p==null ) {
